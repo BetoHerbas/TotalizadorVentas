@@ -1,15 +1,13 @@
-import sumar from "./sumador";
+import netPrice from "./totalizador";
 
-const first = document.querySelector("#primer-numero");
-const second = document.querySelector("#segundo-numero");
-const form = document.querySelector("#sumar-form");
-const div = document.querySelector("#resultado-div");
+const price_input = document.querySelector("#price");
+const form = document.querySelector("#tote-form");
+const div = document.querySelector("#netPrice-div");
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  const firstNumber = Number.parseInt(first.value);
-  const secondNumber = Number.parseInt(second.value);
+  const price = Number.parseInt(price_input.value);
 
-  div.innerHTML = "<p>" + sumar(firstNumber, secondNumber) + "</p>";
+  div.innerHTML = "<p>" + netPrice(price) + "</p>";
 });
