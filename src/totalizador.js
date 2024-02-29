@@ -1,5 +1,5 @@
-function netPrice(price) {
-  return price;
+function netPrice(price, quantity) {
+  return price * quantity;
 }
 
 export default netPrice;
