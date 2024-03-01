@@ -1,4 +1,4 @@
-import {calculateNetPrice, calculateTaxes, calculateTote} from "./totalizador.js";
+import {calculateNetPrice, calculateTaxes, calculateTote, calculateDiscount} from "./totalizador.js";
 
 describe("Net price ", () => {
   it("should return the net price with the quantity of one item", () => {
@@ -40,5 +40,10 @@ describe("Price plus taxes of state", () => {
   });
   it("should return the net price plus taxes of the state AL, 4.00%", () => {
     expect(calculateTote(100, 1, "AL")).toEqual(104);
+  });
+});
+describe("Discount acording to net price", () => {
+  it("should return 0 if the net price in minor to 1000", () => {
+    expect(calculateDiscount(5)).toEqual(0);
   });
 });

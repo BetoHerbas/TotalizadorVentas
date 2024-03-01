@@ -22,5 +22,11 @@ function calculateTote(price, quantity, state) {
   let totalPrice = netPrice + calculateTaxes(netPrice, state);
   return +(totalPrice).toFixed(3);
 }
+function calculateDiscount(netPrice) {
+  if (netPrice >= 1000) {
+    return +(netPrice * 0.03).toFixed(3);
+  }
+  return 0;
+}
 
-export { calculateNetPrice, calculateTaxes, calculateTote };
+export { calculateNetPrice, calculateTaxes, calculateTote, calculateDiscount };
