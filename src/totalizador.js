@@ -28,7 +28,7 @@ function calculateDiscount(netPrice) {
   else if(netPrice >= 7000 && netPrice < 10000){
     return +(netPrice * 0.07).toFixed(3);
   }
-  else if(netPrice >= 10000){
+  else if(netPrice >= 10000 && netPrice < 30000){
     return +(netPrice * 0.1).toFixed(3);
   }
   return 0;
