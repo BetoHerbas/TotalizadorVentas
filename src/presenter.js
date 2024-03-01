@@ -17,12 +17,13 @@ form.addEventListener("submit", (event) => {
   const price = Number.parseInt(price_input.value);
   const quantity = Number.parseInt(quantity_input.value);
   const state = state_input.value;
+  const category = itemCategoryInput.value;
 
   divNetPrice.innerHTML = "<p>" + calculateNetPrice(price, quantity) + "</p>";
   divTaxes.innerHTML = "<p>" + calculateTaxes(calculateNetPrice(price, quantity), state) + "</p>";
-  divTotalPrice.innerHTML = "<p>" + calculateTote(price, quantity,state) + "</p>";
-  divDiscount.innerHTML = "<p>" + calculateDiscount(calculateNetPrice(price, quantity)) + "</p>";
-  console.log(taxByProductCategory(calculateNetPrice(price, quantity), itemCategoryInput.value))
-  divTaxByProductCategory.innerHTML = "<p>" + taxByProductCategory(calculateNetPrice(price, quantity), itemCategoryInput.value) + "</p>";
 
+  divDiscount.innerHTML = "<p>" + calculateDiscount(calculateNetPrice(price, quantity)) + "</p>";
+  divTaxByProductCategory.innerHTML = "<p>" + taxByProductCategory(calculateNetPrice(price, quantity), category) + "</p>";
+
+  divTotalPrice.innerHTML = "<p>" + calculateTote(price, quantity,state, category) + "</p>";
 });

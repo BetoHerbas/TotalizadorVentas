@@ -46,13 +46,14 @@ function taxByProductCategory(netPrice, category)
 
 }
 
-function calculateTote(price, quantity, state) {
+function calculateTote(price, quantity, state, category) {
   let netPrice = calculateNetPrice(price, quantity);
   let discount =  calculateDiscount(netPrice);
   let priceWithDiscount = netPrice - discount;
-  let totalPrice = priceWithDiscount + calculateTaxes(priceWithDiscount, state);
+  let taxesByState = calculateTaxes(priceWithDiscount, state);
+  let taxesByProductCategory = taxByProductCategory(netPrice, category);
+  let totalPrice = priceWithDiscount + taxesByState + taxesByProductCategory;
   return +(totalPrice).toFixed(3);
 }
-
 
 export { calculateNetPrice, calculateTaxes, calculateTote, calculateDiscount, taxByProductCategory };
