@@ -66,7 +66,10 @@ describe("Price minus discount plus taxes", () => {
   it("should return the price minus discount (>= 1000 and <=3000) plus taxes of the state CA", () => {
     expect(calculateTote(1000, 1,"CA")).toEqual(1050.025);
   });
-  it("should return the price minus discount (>= 3000) plus taxes of the state NV", () => {
+  it("should return the price minus discount (>= 3000 and <=7000) plus taxes of the state NV", () => {
     expect(calculateTote(3000, 1,"NV")).toEqual(3078);
+  });
+  it("should return the price minus discount (>= 7000) plus taxes of the state UT", () => {
+    expect(calculateTote(7000, 1,"UT")).toEqual(6942.915);
   });
 });
