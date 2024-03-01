@@ -84,4 +84,7 @@ describe("Price minus discount plus taxes", () => {
   it("should return the price minus discount (>= 10000 and <=30000) plus taxes of the state TX", () => {
     expect(calculateTote(10000, 1,"TX")).toEqual(9562.5);
   });
+  it("should return the price minus discount (>= 30000) plus taxes of the state AL", () => {
+    expect(calculateTote(30000, 1,"AL")).toEqual(26520);
+  });
 });
