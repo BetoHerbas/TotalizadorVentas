@@ -101,4 +101,7 @@ describe("Total with taxes by category product", () => {
   it("should return net price + taxes by state + taxes for de purchase of alcoholic drinks - discount by amount ", () => {
     expect(calculateTote(100, 1,"AL","alcoholic")).toEqual(111);
   });
+  it("should return net price + taxes by state + taxes for de purchase of alcoholic drinks - discount by amount ", () => {
+    expect(calculateTote(100, 1,"AL","electronics")).toEqual(108);
+  });
 });
