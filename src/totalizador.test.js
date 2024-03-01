@@ -46,4 +46,7 @@ describe("Discount acording to net price", () => {
   it("should return 0 if the net price in minor to 1000", () => {
     expect(calculateDiscount(5)).toEqual(0);
   });
+  it("should return 3% of the net price if the net price is equal or major to 1000", () => {
+    expect(calculateDiscount(1000)).toEqual(30);
+  });
 });
