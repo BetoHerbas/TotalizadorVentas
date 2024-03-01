@@ -39,11 +39,14 @@ function calculateDiscount(netPrice) {
 
 function taxByProductCategory(netPrice, category)
 {
-  if(category === "alcoholic"){
-    return +(netPrice * 0.07).toFixed(3);
+  switch (category) {
+    case "alcoholic":
+      return +(netPrice * 0.07).toFixed(3);
+    case "electronics":
+      return +(netPrice * 0.04).toFixed(3);
+    default:
+      return 0;
   }
-  return 0;
-
 }
 
 function calculateTote(price, quantity, state, category) {

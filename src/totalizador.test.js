@@ -92,6 +92,9 @@ describe("Tax by item type", () => {
   it("should return 7% of the net price for de purchase of alcoholic drinks ", () => {
     expect(taxByProductCategory(1000, "alcoholic")).toEqual(70);
   });
+  it("should return 4% of the net price for de purchase of electronics items", () => {
+    expect(taxByProductCategory(1000, "electronics")).toEqual(40);
+  });
 });
 
 describe("Total with taxes by category product", () => {
