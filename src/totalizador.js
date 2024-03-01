@@ -31,6 +31,9 @@ function calculateDiscount(netPrice) {
   else if(netPrice >= 10000 && netPrice < 30000){
     return +(netPrice * 0.1).toFixed(3);
   }
+  else if(netPrice >= 30000){
+    return +(netPrice * 0.15).toFixed(3);
+  }
   return 0;
 }
 function calculateTote(price, quantity, state) {
