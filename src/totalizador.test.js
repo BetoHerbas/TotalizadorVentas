@@ -50,3 +50,8 @@ describe("Discount acording to net price", () => {
     expect(calculateDiscount(1000)).toEqual(30);
   });
 });
+describe("Price minus discount plus taxes", () => {
+  it("should return the price minus discount plus taxes of the state CA", () => {
+    expect(calculateTote(1000, 1,"CA")).toEqual(1050.025);
+  });
+});

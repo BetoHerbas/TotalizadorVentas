@@ -17,16 +17,20 @@ function calculateTaxes(netPrice, state) {
       return 0;
   }
 }
-function calculateTote(price, quantity, state) {
-  let netPrice = calculateNetPrice(price, quantity)
-  let totalPrice = netPrice + calculateTaxes(netPrice, state);
-  return +(totalPrice).toFixed(3);
-}
+
 function calculateDiscount(netPrice) {
   if (netPrice >= 1000) {
     return +(netPrice * 0.03).toFixed(3);
   }
   return 0;
 }
+function calculateTote(price, quantity, state) {
+  let netPrice = calculateNetPrice(price, quantity);
+  let discount =  calculateDiscount(netPrice);
+  let priceWithDiscount = netPrice - discount;
+  let totalPrice = priceWithDiscount + calculateTaxes(priceWithDiscount, state);
+  return +(totalPrice).toFixed(3);
+}
+
 
 export { calculateNetPrice, calculateTaxes, calculateTote, calculateDiscount };
