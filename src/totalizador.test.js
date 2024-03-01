@@ -61,6 +61,9 @@ describe("Discount acording to net price", () => {
   it("should return 7% of the net price if the net price is equal or major to 7000", () => {
     expect(calculateDiscount(7000)).toEqual(490);
   });
+  it("should return 10% of the net price if the net price is equal or major to 10000", () => {
+    expect(calculateDiscount(10000)).toEqual(1000);
+  });
 });
 describe("Price minus discount plus taxes", () => {
   it("should return the price minus discount (>= 1000 and <=3000) plus taxes of the state CA", () => {
