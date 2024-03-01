@@ -1,4 +1,4 @@
-import {calculateNetPrice, calculateTaxes, calculateTote, calculateDiscount} from "./totalizador.js";
+import {calculateNetPrice, calculateTaxes, calculateTote, calculateDiscount, taxByProductCategory} from "./totalizador.js";
 
 describe("Net price ", () => {
   it("should return the net price with the quantity of one item", () => {
@@ -74,5 +74,10 @@ describe("Price minus discount plus taxes", () => {
   });
   it("should return the price minus discount (>= 7000) plus taxes of the state UT", () => {
     expect(calculateTote(7000, 1,"UT")).toEqual(6942.915);
+  });
+});
+describe("Tax by item type", () => {
+  it("should return 7% of the net price for de purchase of alcoholic drinks ", () => {
+    expect(taxByProductCategory(1000, "alcoholic")).toEqual(70);
   });
 });

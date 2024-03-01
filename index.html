@@ -1,30 +1,37 @@
 <html>
-  <body>
-    <h1>Tote</h1>
-    <form id="tote-form">
-      <label for="price">Price:</label>
-      <input type="number" id="price" />
-      <label for="quantity">Quantity</label>
-      <input type="number" id="quantity">
-      <label for="state">State</label>
-      <select name="state" id="state">
-        <option value="CA">California</option>
-        <option value="NV">Nevada</option>
-        <option value="UT">Utah</option>
-        <option value="TX">Texas</option>
-        <option value="AL">Alabama</option>
-      </select>
-      <input type="submit" value="Tote" id="tote-button"/>
-    </form>
-    <label for="netPrice">Net price:</label>
-    <div id="netPrice-div"></div>
-    <label for="discount">Discount</label>
-    <div id="discount-div"></div>
-    <label for="taxes">Taxes:</label>
-    <div id="taxes-div"></div>
-    <label for="totalPrice">Total price:</label>
-    <div id="totalPrice-div"></div>
 
-    <script type="module" src="./src/presenter.js"></script>
-  </body>
+<body>
+  <h1>Tote</h1>
+  <form id="tote-form">
+    <label for="price">Price:</label>
+    <input type="number" id="price" />
+    <label for="quantity">Quantity</label>
+    <input type="number" id="quantity">
+    <label for="state">State</label>
+    <select name="state" id="state">
+      <option value="CA">California</option>
+      <option value="NV">Nevada</option>
+      <option value="UT">Utah</option>
+      <option value="TX">Texas</option>
+      <option value="AL">Alabama</option>
+    </select>
+    <select name="itemCategory" id="itemCategory">
+      <option value="alcoholic">Alcoholic drink</option>
+    </select>
+    <input type="submit" value="Tote" id="tote-button" />
+  </form>
+  <label for="netPrice">Net price:</label>
+  <div id="netPrice-div"></div>
+  <label for="discount">Discount</label>
+  <div id="discount-div"></div>
+  <label for="taxes">Taxes:</label>
+  <div id="taxes-div"></div>
+  <label for="totalPrice">Total price:</label>
+  <div id="totalPrice-div"></div>
+  <label for="itemCategoryTax">itemCategoryTax</label>
+  <div id="itemCategoryTax-div"></div>
+
+  <script type="module" src="./src/presenter.js"></script>
+</body>
+
 </html>

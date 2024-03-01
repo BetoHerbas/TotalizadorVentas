@@ -33,6 +33,16 @@ function calculateDiscount(netPrice) {
   }
   return 0;
 }
+
+function taxByProductCategory(netPrice, category)
+{
+  if(category === "alcoholic"){
+    return +(netPrice * 0.07).toFixed(3);
+  }
+  return 0;
+
+}
+
 function calculateTote(price, quantity, state) {
   let netPrice = calculateNetPrice(price, quantity);
   let discount =  calculateDiscount(netPrice);
@@ -42,4 +52,4 @@ function calculateTote(price, quantity, state) {
 }
 
 
-export { calculateNetPrice, calculateTaxes, calculateTote, calculateDiscount };
+export { calculateNetPrice, calculateTaxes, calculateTote, calculateDiscount, taxByProductCategory };
