@@ -12,6 +12,12 @@ describe("Taxes according to state", () => {
   it("should return the taxes of the state CA, 8.25%", () => {
     expect(calculateTaxes(10, "CA")).toEqual(0.825);
   });
+  it("should return the taxes of the state NV, 8.00%", () => {
+    expect(calculateTaxes(10, "NV")).toEqual(0.8);
+  });
+  it("should return the taxes of the state UT, 6.65%", () => {
+    expect(calculateTaxes(10, "UT")).toEqual(0.665);
+  });
 });
 describe("Price plus taxes of state", () => {
   it("should return the net price plus taxes of the state CA, 8.25%", () => {
@@ -19,5 +25,8 @@ describe("Price plus taxes of state", () => {
   });
   it("should return the net price plus taxes of the state NV, 8.0%", () => {
     expect(calculateTote(100, 1, "NV")).toEqual(108);
+  });
+  it("should return the net price plus taxes of the state UT, 6.65%", () => {
+    expect(calculateTote(100, 1, "UT")).toEqual(106.65);
   });
 });

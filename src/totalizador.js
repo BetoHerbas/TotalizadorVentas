@@ -7,6 +7,8 @@ function calculateTaxes(netPrice, state){
       return +(netPrice * 0.0825).toFixed(3);
     case "NV":
       return +(netPrice * 0.08).toFixed(3);
+    case "UT":
+      return +(netPrice * 0.0665).toFixed(3);
     default:
       return 0;
   }
