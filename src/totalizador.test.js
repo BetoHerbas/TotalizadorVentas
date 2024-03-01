@@ -18,6 +18,9 @@ describe("Taxes according to state", () => {
   it("should return the taxes of the state UT, 6.65%", () => {
     expect(calculateTaxes(10, "UT")).toEqual(0.665);
   });
+  it("should return the taxes of the state TX, 6.25%", () => {
+    expect(calculateTaxes(10, "TX")).toEqual(0.625);
+  });
 });
 describe("Price plus taxes of state", () => {
   it("should return the net price plus taxes of the state CA, 8.25%", () => {
@@ -28,5 +31,8 @@ describe("Price plus taxes of state", () => {
   });
   it("should return the net price plus taxes of the state UT, 6.65%", () => {
     expect(calculateTote(100, 1, "UT")).toEqual(106.65);
+  });
+  it("should return the net price plus taxes of the state TX, 6.25%", () => {
+    expect(calculateTote(100, 1, "TX")).toEqual(106.25);
   });
 });
