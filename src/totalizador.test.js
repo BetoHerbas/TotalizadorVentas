@@ -98,6 +98,9 @@ describe("Tax by item type", () => {
   it("should return 3% of the net price for de purchase of furniture", () => {
     expect(taxByProductCategory(1000, "furniture")).toEqual(30);
   });
+  it("should return 2% of the net price for purchase of clothes", () => {
+    expect(taxByProductCategory(1000, "clothing")).toEqual(20);
+  });
 });
 
 describe("Total with taxes by category product", () => {
