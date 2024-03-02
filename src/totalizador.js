@@ -93,6 +93,8 @@ function discountByClientCategoryOnShippingCost(shippingCost, category) {
       return +(shippingCost * 0.005).toFixed(3);
     case "oldRecurring":
       return +(shippingCost * 0.01).toFixed(3);
+    case "special":
+      return +(shippingCost * 0.015).toFixed(3);
     default:
       return 0;
   }

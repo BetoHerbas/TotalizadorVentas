@@ -197,13 +197,10 @@ describe("Discount by client category on shipping cost", () => {
   it("should return 1% of the shipping cost for old recurring clients", () => {
     expect(discountByClientCategoryOnShippingCost(1000, "oldRecurring")).toEqual(10);
   });
-});
-
-describe("Total with discount by client category on shipping cost", () => {
-  it("should return previous price - discount by standard client category on shipping cost", () => {
-    expect(calculateTote(100, 1,"AL","alcoholic", 300, "standard")).toEqual(120);
+  it("should return 1.5% of the shipping cost for special client", () => {
+    expect(discountByClientCategoryOnShippingCost(1000, "special")).toEqual(15);
   });
-});
+}); 
 
 describe("Total with discount by client category on shipping cost", () => {
   it("should return previous price - discount by standard client category on shipping cost", () => {
