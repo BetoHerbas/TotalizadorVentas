@@ -1,4 +1,4 @@
-import {calculateNetPrice, calculateTaxes, calculateTote, calculateDiscount, taxByProductCategory, calculateShippingCost, discountByProductCategory} from "./totalizador.js";
+import {calculateNetPrice, calculateTaxes, calculateTote, calculateDiscount, taxByProductCategory, calculateShippingCost, discountByProductCategory, discountByClientCategoryOnShippingCost} from "./totalizador.js";
 
 describe("Net price ", () => {
   it("should return the net price with the quantity of one item", () => {
@@ -181,5 +181,11 @@ describe("Discount by product category", () => {
 describe("Total with discount by category product", () => {
   it("should return net price + discount by category product + shipping cost + taxes by state + taxes for de purchase of alcoholic drinks - discount by amount ", () => {
     expect(calculateTote(100, 1,"AL","alcoholic", 300)).toEqual(120);
+  });
+});
+
+describe("Discount by client category on shipping cost", () => {
+  it("should return 0% of the net price for standard clients", () => {
+    expect(discountByClientCategoryOnShippingCost(1000, "standard")).toEqual(0);
   });
 });
