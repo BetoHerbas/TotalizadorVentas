@@ -80,6 +80,8 @@ function discountByProductCategory(netPrice, category) {
       return +(netPrice * 0.01).toFixed(3);
     case "stationary":
       return +(netPrice * 0.015).toFixed(3);
+    case "food":
+      return +(netPrice * 0.02).toFixed(3);
     default:
       return 0;
   }
