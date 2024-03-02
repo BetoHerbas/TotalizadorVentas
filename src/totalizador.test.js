@@ -117,7 +117,7 @@ describe("Total with taxes by category product", () => {
     expect(calculateTote(100, 1,"AL","alcoholic")).toEqual(111);
   });
   it("should return net price + taxes by state + taxes for de purchase of electronics items - discount by amount ", () => {
-    expect(calculateTote(100, 1,"AL","electronics")).toEqual(108);
+    expect(calculateTote(100, 1,"AL","electronics")).toEqual(107);
   });
   it("should return net price + taxes by state + taxes for de purchase of furniture - discount by amount ", () => {
     expect(calculateTote(100, 1,"AL","furniture")).toEqual(107);
@@ -168,7 +168,10 @@ describe("Discount by product category", () => {
     expect(discountByProductCategory(1000, "furniture")).toEqual(0);
   });
   it("should return 0% of the net price for the purchase of various products", () => {
-    expect(discountByProductCategory(1000, "electronics")).toEqual(0);
+    expect(discountByProductCategory(1000, "various")).toEqual(0);
+  });
+  it("should return 1% of the net price for the purchase of electronic products", () => {
+    expect(discountByProductCategory(1000, "electronics")).toEqual(10);
   });
 });
 
