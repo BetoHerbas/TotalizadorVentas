@@ -176,6 +176,9 @@ describe("Discount by product category", () => {
   it("should return 1.5% of the net price for the purchase of stationary", () => {
     expect(discountByProductCategory(1000, "stationary")).toEqual(15);
   });
+  it("should return 2% of the net price for the purchase of food", () => {
+    expect(discountByProductCategory(1000, "food")).toEqual(20);
+  });
 });
 
 describe("Total with discount by category product", () => {
