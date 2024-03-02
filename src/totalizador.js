@@ -88,7 +88,12 @@ function discountByProductCategory(netPrice, category) {
 }
 
 function discountByClientCategoryOnShippingCost(shippingCost, category) {
-    return 0;
+  switch (category) {
+    case "recurring":
+      return +(shippingCost * 0.005).toFixed(3);
+    default:
+      return 0;
+  }
 }
 
 function calculateTote(price, quantity, state, category, weight) {

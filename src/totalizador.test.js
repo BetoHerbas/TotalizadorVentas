@@ -191,4 +191,7 @@ describe("Discount by client category on shipping cost", () => {
   it("should return 0% of the net price for standard clients", () => {
     expect(discountByClientCategoryOnShippingCost(1000, "standard")).toEqual(0);
   });
+  it("should return 0.5% of the net price for recurring clients", () => {
+    expect(discountByClientCategoryOnShippingCost(1000, "recurring")).toEqual(5);
+  });
 });
