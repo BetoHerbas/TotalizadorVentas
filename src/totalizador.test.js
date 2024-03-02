@@ -162,3 +162,9 @@ describe("Discount by product category", () => {
     expect(discountByProductCategory(1000, "alcoholic")).toEqual(0);
   });
 });
+
+describe("Total with discount by category product", () => {
+  it("should return net price + discount by category product + shipping cost + taxes by state + taxes for de purchase of alcoholic drinks - discount by amount ", () => {
+    expect(calculateTote(100, 1,"AL","alcoholic", 300)).toEqual(120);
+  });
+});

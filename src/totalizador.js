@@ -75,9 +75,10 @@ function calculateShippingCost(weight) {
 }
 
 function discountByProductCategory(netPrice, category) {
-  if(category === "alcoholic") {
+  if (category === "alcoholic") {
     return 0;
   }
+  return 0;
 }
 
 function calculateTote(price, quantity, state, category, weight) {
@@ -87,7 +88,8 @@ function calculateTote(price, quantity, state, category, weight) {
   let taxesByState = calculateTaxes(priceWithDiscount, state);
   let taxesByProductCategory = taxByProductCategory(netPrice, category);
   let shippingCost = calculateShippingCost(weight);
-  let totalPrice = priceWithDiscount + taxesByState + taxesByProductCategory + shippingCost;
+  let discountProductCategory = discountByProductCategory(netPrice, category);
+  let totalPrice = priceWithDiscount + taxesByState + taxesByProductCategory + shippingCost - discountProductCategory;
   return +(totalPrice).toFixed(3);
 }
 
