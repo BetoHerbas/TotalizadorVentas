@@ -1,4 +1,4 @@
-import {calculateNetPrice, calculateTaxes, calculateTote, calculateDiscount, taxByProductCategory, calculateShippingCost, discountByProductCategory, discountByClientCategoryOnShippingCost} from "./totalizador.js";
+import { calculateNetPrice, calculateTaxes, calculateTote, calculateDiscount, taxByProductCategory, calculateShippingCost, discountByProductCategory, discountByClientCategoryOnShippingCost, discountFixedAmount } from "./totalizador.js";
 
 describe("Net price ", () => {
   it("should return the net price with the quantity of one item", () => {
@@ -73,19 +73,19 @@ describe("Discount acording to net price", () => {
 });
 describe("Price minus discount plus taxes", () => {
   it("should return the price minus discount (>= 1000 and <=3000) plus taxes of the state CA", () => {
-    expect(calculateTote(1000, 1,"CA")).toEqual(1050.025);
+    expect(calculateTote(1000, 1, "CA")).toEqual(1050.025);
   });
   it("should return the price minus discount (>= 3000 and <=7000) plus taxes of the state NV", () => {
-    expect(calculateTote(3000, 1,"NV")).toEqual(3078);
+    expect(calculateTote(3000, 1, "NV")).toEqual(3078);
   });
   it("should return the price minus discount (>= 7000 and <=10000) plus taxes of the state UT", () => {
-    expect(calculateTote(7000, 1,"UT")).toEqual(6942.915);
+    expect(calculateTote(7000, 1, "UT")).toEqual(6942.915);
   });
   it("should return the price minus discount (>= 10000 and <=30000) plus taxes of the state TX", () => {
-    expect(calculateTote(10000, 1,"TX")).toEqual(9562.5);
+    expect(calculateTote(10000, 1, "TX")).toEqual(9562.5);
   });
   it("should return the price minus discount (>= 30000) plus taxes of the state AL", () => {
-    expect(calculateTote(30000, 1,"AL")).toEqual(26520);
+    expect(calculateTote(30000, 1, "AL")).toEqual(26520);
   });
 });
 describe("Tax by item type", () => {
@@ -114,13 +114,13 @@ describe("Tax by item type", () => {
 
 describe("Total with taxes by category product", () => {
   it("should return net price + taxes by state + taxes for de purchase of alcoholic drinks - discount by amount ", () => {
-    expect(calculateTote(100, 1,"AL","alcoholic")).toEqual(111);
+    expect(calculateTote(100, 1, "AL", "alcoholic")).toEqual(111);
   });
   it("should return net price + taxes by state + taxes for de purchase of electronics items - discount by amount ", () => {
-    expect(calculateTote(100, 1,"AL","electronics")).toEqual(107);
+    expect(calculateTote(100, 1, "AL", "electronics")).toEqual(107);
   });
   it("should return net price + taxes by state + taxes for de purchase of furniture - discount by amount ", () => {
-    expect(calculateTote(100, 1,"AL","furniture")).toEqual(107);
+    expect(calculateTote(100, 1, "AL", "furniture")).toEqual(107);
   });
 });
 
@@ -153,7 +153,7 @@ describe("Shipping cost", () => {
 
 describe("Total with shipping cost", () => {
   it("should return net price + shipping cost + taxes by state + taxes for de purchase of alcoholic drinks - discount by amount ", () => {
-    expect(calculateTote(100, 1,"AL","alcoholic", 300)).toEqual(120);
+    expect(calculateTote(100, 1, "AL", "alcoholic", 300)).toEqual(120);
   });
 });
 
@@ -183,7 +183,7 @@ describe("Discount by product category", () => {
 
 describe("Total with discount by category product", () => {
   it("should return net price + discount by category product + shipping cost + taxes by state + taxes for de purchase of alcoholic drinks - discount by amount ", () => {
-    expect(calculateTote(100, 1,"AL","alcoholic", 300)).toEqual(120);
+    expect(calculateTote(100, 1, "AL", "alcoholic", 300)).toEqual(120);
   });
 });
 
@@ -200,13 +200,19 @@ describe("Discount by client category on shipping cost", () => {
   it("should return 1.5% of the shipping cost for special client", () => {
     expect(discountByClientCategoryOnShippingCost(1000, "special")).toEqual(15);
   });
-}); 
+});
 
 describe("Total with discount by client category on shipping cost", () => {
   it("should return previous price - discount by standard client category on shipping cost", () => {
-    expect(calculateTote(100, 1,"AL","alcoholic", 300, "standard")).toEqual(120);
+    expect(calculateTote(100, 1, "AL", "alcoholic", 300, "standard")).toEqual(120);
   });
   it("should return previous price - discount by old recurring client category on shipping cost", () => {
-    expect(calculateTote(1000, 10,"UT","alcoholic", 600, "oldRecurring")).toEqual(10307.41);
+    expect(calculateTote(1000, 10, "UT", "alcoholic", 600, "oldRecurring")).toEqual(10307.41);
+  });
+});
+
+describe("Discount of fixed amount", () => {
+  it("should return 100 if the client is recurring, the net price is major to 3000 and for food category", () => {
+    expect(discountFixedAmount(50000, "food", "recurring")).toEqual(100);
   });
 });

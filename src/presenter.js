@@ -1,4 +1,4 @@
-import { calculateNetPrice, calculateTaxes, calculateTote, calculateDiscount, taxByProductCategory, calculateShippingCost, discountByProductCategory, discountByClientCategoryOnShippingCost } from "./totalizador.js";
+import { calculateNetPrice, calculateTaxes, calculateTote, calculateDiscount, taxByProductCategory, calculateShippingCost, discountByProductCategory, discountByClientCategoryOnShippingCost, discountFixedAmount} from "./totalizador.js";
 
 const price_input = document.querySelector("#price");
 const quantity_input = document.querySelector("#quantity");
@@ -15,6 +15,7 @@ const volumetricWeightInput = document.querySelector("#weight");
 const divShippingCost = document.querySelector("#shippingCost-div");
 const discountByProductCategoryDiv = document.querySelector("#discountByProductCategory-div");
 const discountByClientCategoryOnShippingCostDiv = document.querySelector("#discountByClientCategoryOnShippingCost-div");
+const discountFixedAmountDiv = document.querySelector('#discountFixedAmount-div')
 
 
 form.addEventListener("submit", (event) => {
@@ -37,6 +38,7 @@ form.addEventListener("submit", (event) => {
   divShippingCost.innerHTML = "<p>" + shippingCost + "</p>";
   discountByProductCategoryDiv.innerHTML = "<p>" + discountByProductCategory(netPrice, productCategory) + "</p>";
   discountByClientCategoryOnShippingCostDiv.innerHTML = "<p>" + discountByClientCategoryOnShippingCost(shippingCost, clientCategory) + "</p>";
+  discountFixedAmountDiv.innerHTML = "<p>" + discountFixedAmount(netPrice, productCategory, clientCategory) + "</p>";
 
   divTotalPrice.innerHTML = "<p>" + calculateTote(price, quantity, state, productCategory, weight, clientCategory) + "</p>";
 });

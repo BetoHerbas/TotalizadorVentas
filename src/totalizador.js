@@ -99,6 +99,9 @@ function discountByClientCategoryOnShippingCost(shippingCost, category) {
       return 0;
   }
 }
+function discountFixedAmount(netPrice, categoryProduct, categoryClient){
+  return 100;
+}
 
 function calculateTote(price, quantity, state, productCategory, weight, clientCategory) {
   let netPrice = calculateNetPrice(price, quantity);
@@ -113,4 +116,4 @@ function calculateTote(price, quantity, state, productCategory, weight, clientCa
   return +(totalPrice).toFixed(3);
 }
 
-export { calculateNetPrice, calculateTaxes, calculateTote, calculateDiscount, taxByProductCategory, calculateShippingCost, discountByProductCategory, discountByClientCategoryOnShippingCost };
+export { calculateNetPrice, calculateTaxes, calculateTote, calculateDiscount, taxByProductCategory, calculateShippingCost, discountByProductCategory, discountByClientCategoryOnShippingCost, discountFixedAmount};
