@@ -132,3 +132,9 @@ describe("Shipping cost", () => {
     expect(calculateShippingCost(250)).toEqual(9);
   });
 });
+
+describe("Total with shipping cost", () => {
+  it("should return net price + shipping cost + taxes by state + taxes for de purchase of alcoholic drinks - discount by amount ", () => {
+    expect(calculateTote(100, 1,"AL","alcoholic", 300)).toEqual(120);
+  });
+});
