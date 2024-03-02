@@ -53,7 +53,10 @@ function taxByProductCategory(netPrice, category) {
 }
 
 function calculateShippingCost(weight) {
-  if (weight <= 200 && weight >= 101) {
+  if (weight <= 100 && weight >= 80) {
+    return 6.5;
+  }
+  else if (weight <= 200 && weight >= 101) {
     return 8;
   }
   else if (weight > 200) {

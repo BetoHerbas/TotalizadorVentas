@@ -126,13 +126,16 @@ describe("Total with taxes by category product", () => {
 
 describe("Shipping cost", () => {
   it("should return 0 if the volumetric weight is minor to 200", () => {
-    expect(calculateShippingCost(100)).toEqual(0);
+    expect(calculateShippingCost(1)).toEqual(0);
   });
   it("should return 9 if the volumetric weight is major to 200", () => {
     expect(calculateShippingCost(250)).toEqual(9);
   });
   it("should return 8 if the volumetric weight is major equal to 101 and minor to 200", () => {
     expect(calculateShippingCost(150)).toEqual(8);
+  });
+  it("should return 6.5 if the volumetric weight is major equal to 80 and minor equal to 100", () => {
+    expect(calculateShippingCost(90)).toEqual(6.5);
   });
 });
 
