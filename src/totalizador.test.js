@@ -140,6 +140,9 @@ describe("Shipping cost", () => {
   it("should return 6 if the volumetric weight is major equal to 41 and minor equal to 80", () => {
     expect(calculateShippingCost(70)).toEqual(6);
   });
+  it("should return 5 if the volumetric weight is major equal to 21 and minor equal to 40", () => {
+    expect(calculateShippingCost(30)).toEqual(5);
+  });
 });
 
 describe("Total with shipping cost", () => {
