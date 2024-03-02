@@ -192,3 +192,9 @@ describe("Discount by client category on shipping cost", () => {
     expect(discountByClientCategoryOnShippingCost(1000, "standard")).toEqual(0);
   });
 });
+
+describe("Total with discount by client category on shipping cost", () => {
+  it("should return previous price - discount by standard client category on shipping cost", () => {
+    expect(calculateTote(100, 1,"AL","alcoholic", 300, "standard")).toEqual(120);
+  });
+});

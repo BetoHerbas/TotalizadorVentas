@@ -99,7 +99,8 @@ function calculateTote(price, quantity, state, category, weight) {
   let taxesByProductCategory = taxByProductCategory(netPrice, category);
   let shippingCost = calculateShippingCost(weight);
   let discountProductCategory = discountByProductCategory(netPrice, category);
-  let totalPrice = priceWithDiscount + taxesByState + taxesByProductCategory + shippingCost - discountProductCategory;
+  let discountClientCategoryOnShippingCost = discountByClientCategoryOnShippingCost(shippingCost, category);
+  let totalPrice = priceWithDiscount + taxesByState + taxesByProductCategory + shippingCost - discountProductCategory - discountClientCategoryOnShippingCost;
   return +(totalPrice).toFixed(3);
 }
 
