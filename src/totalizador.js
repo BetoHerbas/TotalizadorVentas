@@ -91,20 +91,22 @@ function discountByClientCategoryOnShippingCost(shippingCost, category) {
   switch (category) {
     case "recurring":
       return +(shippingCost * 0.005).toFixed(3);
+    case "oldRecurring":
+      return +(shippingCost * 0.01).toFixed(3);
     default:
       return 0;
   }
 }
 
-function calculateTote(price, quantity, state, category, weight) {
+function calculateTote(price, quantity, state, productCategory, weight, clientCategory) {
   let netPrice = calculateNetPrice(price, quantity);
   let discount = calculateDiscount(netPrice);
   let priceWithDiscount = netPrice - discount;
   let taxesByState = calculateTaxes(priceWithDiscount, state);
-  let taxesByProductCategory = taxByProductCategory(netPrice, category);
+  let taxesByProductCategory = taxByProductCategory(netPrice, productCategory);
   let shippingCost = calculateShippingCost(weight);
-  let discountProductCategory = discountByProductCategory(netPrice, category);
-  let discountClientCategoryOnShippingCost = discountByClientCategoryOnShippingCost(shippingCost, category);
+  let discountProductCategory = discountByProductCategory(netPrice, productCategory);
+  let discountClientCategoryOnShippingCost = discountByClientCategoryOnShippingCost(shippingCost, clientCategory);
   let totalPrice = priceWithDiscount + taxesByState + taxesByProductCategory + shippingCost - discountProductCategory - discountClientCategoryOnShippingCost;
   return +(totalPrice).toFixed(3);
 }
