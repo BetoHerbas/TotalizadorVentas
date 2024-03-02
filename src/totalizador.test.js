@@ -104,6 +104,9 @@ describe("Tax by item type", () => {
   it("should return 0% of the net price for purchase of food", () => {
     expect(taxByProductCategory(1000, "food")).toEqual(0);
   });
+  it("should return 0% of the net price for purchase of stationery", () => {
+    expect(taxByProductCategory(1000, "stationery")).toEqual(0);
+  });
 });
 
 describe("Total with taxes by category product", () => {
