@@ -1,4 +1,4 @@
-import {calculateNetPrice, calculateTaxes, calculateTote, calculateDiscount, taxByProductCategory} from "./totalizador.js";
+import {calculateNetPrice, calculateTaxes, calculateTote, calculateDiscount, taxByProductCategory, calculateShippingCost} from "./totalizador.js";
 
 const price_input = document.querySelector("#price");
 const quantity_input = document.querySelector("#quantity");
@@ -10,6 +10,8 @@ const divTotalPrice = document.querySelector("#totalPrice-div");
 const divDiscount = document.querySelector("#discount-div");
 const itemCategoryInput = document.querySelector("#itemCategory")
 const divTaxByProductCategory = document.querySelector("#itemCategoryTax-div")
+const volumetricWeightInput = document.querySelector("#weight");
+const divShippingCost = document.querySelector("#shippingCost-div");
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -24,6 +26,7 @@ form.addEventListener("submit", (event) => {
 
   divDiscount.innerHTML = "<p>" + calculateDiscount(calculateNetPrice(price, quantity)) + "</p>";
   divTaxByProductCategory.innerHTML = "<p>" + taxByProductCategory(calculateNetPrice(price, quantity), category) + "</p>";
+  divShippingCost.innerHTML = "<p>" + calculateShippingCost(volumetricWeightInput.value) + "</p>";
 
   divTotalPrice.innerHTML = "<p>" + calculateTote(price, quantity,state, category) + "</p>";
 });

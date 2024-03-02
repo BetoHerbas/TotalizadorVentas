@@ -63,4 +63,12 @@ function calculateTote(price, quantity, state, category) {
   return +(totalPrice).toFixed(3);
 }
 
-export { calculateNetPrice, calculateTaxes, calculateTote, calculateDiscount, taxByProductCategory };
+function calculateShippingCost(weight){
+  if(weight > 200)
+  {
+    return 9;
+  }
+  return 0;
+}
+
+export { calculateNetPrice, calculateTaxes, calculateTote, calculateDiscount, taxByProductCategory, calculateShippingCost };

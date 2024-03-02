@@ -1,4 +1,4 @@
-import {calculateNetPrice, calculateTaxes, calculateTote, calculateDiscount, taxByProductCategory} from "./totalizador.js";
+import {calculateNetPrice, calculateTaxes, calculateTote, calculateDiscount, taxByProductCategory, calculateShippingCost} from "./totalizador.js";
 
 describe("Net price ", () => {
   it("should return the net price with the quantity of one item", () => {
@@ -121,5 +121,14 @@ describe("Total with taxes by category product", () => {
   });
   it("should return net price + taxes by state + taxes for de purchase of furniture - discount by amount ", () => {
     expect(calculateTote(100, 1,"AL","furniture")).toEqual(107);
+  });
+});
+
+describe("Shipping cost", () => {
+  it("should return 0 if the volumetric weight is minor to 200", () => {
+    expect(calculateShippingCost(100)).toEqual(0);
+  });
+  it("should return 9 if the volumetric weight is major to 250", () => {
+    expect(calculateShippingCost(250)).toEqual(9);
   });
 });
