@@ -107,4 +107,7 @@ describe("Total with taxes by category product", () => {
   it("should return net price + taxes by state + taxes for de purchase of electronics items - discount by amount ", () => {
     expect(calculateTote(100, 1,"AL","electronics")).toEqual(108);
   });
+  it("should return net price + taxes by state + taxes for de purchase of furniture - discount by amount ", () => {
+    expect(calculateTote(100, 1,"AL","furniture")).toEqual(107);
+  });
 });
