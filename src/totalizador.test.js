@@ -95,13 +95,16 @@ describe("Tax by item type", () => {
   it("should return 4% of the net price for de purchase of electronics items", () => {
     expect(taxByProductCategory(1000, "electronics")).toEqual(40);
   });
+  it("should return 3% of the net price for de purchase of furniture", () => {
+    expect(taxByProductCategory(1000, "furniture")).toEqual(30);
+  });
 });
 
 describe("Total with taxes by category product", () => {
   it("should return net price + taxes by state + taxes for de purchase of alcoholic drinks - discount by amount ", () => {
     expect(calculateTote(100, 1,"AL","alcoholic")).toEqual(111);
   });
-  it("should return net price + taxes by state + taxes for de purchase of alcoholic drinks - discount by amount ", () => {
+  it("should return net price + taxes by state + taxes for de purchase of electronics items - discount by amount ", () => {
     expect(calculateTote(100, 1,"AL","electronics")).toEqual(108);
   });
 });

@@ -44,6 +44,8 @@ function taxByProductCategory(netPrice, category)
       return +(netPrice * 0.07).toFixed(3);
     case "electronics":
       return +(netPrice * 0.04).toFixed(3);
+    case "furniture":
+      return +(netPrice * 0.03).toFixed(3);
     default:
       return 0;
   }
