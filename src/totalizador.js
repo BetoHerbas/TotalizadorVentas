@@ -99,8 +99,11 @@ function discountByClientCategoryOnShippingCost(shippingCost, category) {
       return 0;
   }
 }
-function discountFixedAmount(netPrice, categoryProduct, categoryClient){
-  return 100;
+function discountFixedAmount(netPrice, productCategory, clientCategory){
+  if (netPrice > 3000 && productCategory === "food" && clientCategory === "recurring"){
+    return 100;
+  }
+  return 0;
 }
 
 function calculateTote(price, quantity, state, productCategory, weight, clientCategory) {
