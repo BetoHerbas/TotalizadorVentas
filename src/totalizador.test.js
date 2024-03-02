@@ -164,6 +164,9 @@ describe("Discount by product category", () => {
   it("should return 0% of the net price for the purchase of clothes", () => {
     expect(discountByProductCategory(1000, "clothing")).toEqual(0);
   });
+  it("should return 0% of the net price for the purchase of furniture", () => {
+    expect(discountByProductCategory(1000, "furniture")).toEqual(0);
+  });
 });
 
 describe("Total with discount by category product", () => {
