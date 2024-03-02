@@ -75,10 +75,10 @@ function calculateShippingCost(weight) {
 }
 
 function discountByProductCategory(netPrice, category) {
-  if (category === "alcoholic") {
-    return 0;
+  switch (category) {
+    default:
+      return 0;
   }
-  return 0;
 }
 
 function calculateTote(price, quantity, state, category, weight) {

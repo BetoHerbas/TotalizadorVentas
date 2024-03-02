@@ -158,8 +158,11 @@ describe("Total with shipping cost", () => {
 });
 
 describe("Discount by product category", () => {
-  it("should return 0% of the net price for de purchase of alcoholic drinks", () => {
+  it("should return 0% of the net price for the purchase of alcoholic drinks", () => {
     expect(discountByProductCategory(1000, "alcoholic")).toEqual(0);
+  });
+  it("should return 0% of the net price for the purchase of clothes", () => {
+    expect(discountByProductCategory(1000, "clothing")).toEqual(0);
   });
 });
 
