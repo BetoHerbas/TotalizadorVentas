@@ -28,12 +28,15 @@ form.addEventListener("submit", (event) => {
   const weight = volumetricWeightInput.value;
   const clientCategory = clientCategoryInput.value;
 
-  switch (validateInputs(price, quantity)) {
+  switch (validateInputs(price, quantity, weight)) {
     case "price":
       alert("The price must be greater than 0.");
       break;
     case "quantity":
       alert("The quantity must be greater than 0.");
+      break;
+    case "weight":
+      alert("The weight must be greater than 0.");
       break;
     default:
       let netPrice = calculateNetPrice(price, quantity);

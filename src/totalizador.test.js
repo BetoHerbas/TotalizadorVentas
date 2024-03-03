@@ -236,4 +236,7 @@ describe("Validate inputs", () => {
   it("should return quantity if the quantity is minor or equal to 0", () => {
     expect(validateInputs(10, -1)).toEqual("quantity");
   });
+  it("should return weight if the volumetric weight is minor or equal to 0", () => {
+    expect(validateInputs(10, 100, -10)).toEqual("weight");
+  });
 });

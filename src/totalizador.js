@@ -123,12 +123,15 @@ function calculateTote(price, quantity, state, productCategory, weight, clientCa
   return +(totalPrice).toFixed(3);
 }
 
-function validateInputs(pricePerProduct, quantity){
+function validateInputs(pricePerProduct, quantity, weight){
   if (pricePerProduct <= 0 || isNaN(pricePerProduct) || pricePerProduct === ""){
     return "price";
   }
   else if(quantity <= 0 || isNaN(quantity) || quantity === ""){
     return "quantity";
+  }
+  else if(weight <= 0 || isNaN(weight) || weight === ""){
+    return "weight";
   }
   return "";
 }
