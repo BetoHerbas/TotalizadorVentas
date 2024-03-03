@@ -230,7 +230,10 @@ describe("Total with discount of fixed amount", () => {
 });
 
 describe("Validate inputs", () => {
-  it("should return false if the price is minor or equal to 0", () => {
-    expect(validateInputs(0)).toEqual(false);
+  it("should return price if the price is minor or equal to 0", () => {
+    expect(validateInputs(0)).toEqual("price");
+  });
+  it("should return quantity if the quantity is minor or equal to 0", () => {
+    expect(validateInputs(10, -1)).toEqual("quantity");
   });
 });

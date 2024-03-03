@@ -123,11 +123,14 @@ function calculateTote(price, quantity, state, productCategory, weight, clientCa
   return +(totalPrice).toFixed(3);
 }
 
-function validateInputs(pricePerProduct){
+function validateInputs(pricePerProduct, quantity){
   if (pricePerProduct <= 0 || isNaN(pricePerProduct) || pricePerProduct === ""){
-    return false;
+    return "price";
   }
-  return true;
+  else if(quantity <= 0 || isNaN(quantity) || quantity === ""){
+    return "quantity";
+  }
+  return "";
 }
 
 export { calculateNetPrice, calculateTaxes, calculateTote, calculateDiscount, taxByProductCategory, calculateShippingCost, discountByProductCategory, discountByClientCategoryOnShippingCost, discountFixedAmount, validateInputs};
