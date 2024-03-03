@@ -213,10 +213,13 @@ describe("Total with discount by client category on shipping cost", () => {
 
 describe("Discount of fixed amount", () => {
   it("should return 100 if the client is recurring, the net price is major to 3000 and for food category", () => {
-    expect(discountFixedAmount(50000, "food", "recurring")).toEqual(100);
+    expect(discountFixedAmount(5000, "food", "recurring")).toEqual(100);
   });
   it("should return 0 if the client isn't recurring or the net price isn't major to 3000 or for another product category", () => {
-    expect(discountFixedAmount(50000, "furniture", "recurring")).toEqual(0);
+    expect(discountFixedAmount(5000, "furniture", "recurring")).toEqual(0);
+  });
+  it("should return 200 if the client is special, the net price is major to 7000 and for electronics category", () => {
+    expect(discountFixedAmount(8000, "electronics", "special")).toEqual(200);
   });
 });
 

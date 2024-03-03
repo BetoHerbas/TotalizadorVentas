@@ -103,6 +103,9 @@ function discountFixedAmount(netPrice, productCategory, clientCategory){
   if (netPrice > 3000 && productCategory === "food" && clientCategory === "recurring"){
     return 100;
   }
+  else if (netPrice > 7000 && productCategory === "electronics" && clientCategory === "special"){
+    return 200;
+  }
   return 0;
 }
 
