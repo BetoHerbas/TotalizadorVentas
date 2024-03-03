@@ -30,10 +30,14 @@ form.addEventListener("submit", (event) => {
   let netPrice = calculateNetPrice(price, quantity);
   let shippingCost = calculateShippingCost(weight);
 
-  divNetPrice.innerHTML = "<p>" + netPrice + "</p>";
-  divTaxes.innerHTML = "<p>" + calculateTaxes(netPrice, state) + "</p>";
+  let discountOfNetPrice = calculateDiscount(netPrice);
+  let priceWithDiscount = netPrice - discountOfNetPrice;
 
-  divDiscount.innerHTML = "<p>" + calculateDiscount(netPrice) + "</p>";
+  divNetPrice.innerHTML = "<p>" + netPrice + "</p>";
+  divDiscount.innerHTML = "<p>" + discountOfNetPrice + "</p>";
+  divTaxes.innerHTML = "<p>" + calculateTaxes(priceWithDiscount, state) + "</p>";
+
+  
   divTaxByProductCategory.innerHTML = "<p>" + taxByProductCategory(netPrice, productCategory) + "</p>";
   divShippingCost.innerHTML = "<p>" + shippingCost + "</p>";
   discountByProductCategoryDiv.innerHTML = "<p>" + discountByProductCategory(netPrice, productCategory) + "</p>";
