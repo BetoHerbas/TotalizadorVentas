@@ -1,4 +1,4 @@
-import { calculateNetPrice, calculateTaxes, calculateTote, calculateDiscount, taxByProductCategory, calculateShippingCost, discountByProductCategory, discountByClientCategoryOnShippingCost, discountFixedAmount } from "./totalizador.js";
+import { calculateNetPrice, calculateTaxes, calculateTote, calculateDiscount, taxByProductCategory, calculateShippingCost, discountByProductCategory, discountByClientCategoryOnShippingCost, discountFixedAmount, validateInputs } from "./totalizador.js";
 
 describe("Net price ", () => {
   it("should return the net price with the quantity of one item", () => {
@@ -226,5 +226,11 @@ describe("Discount of fixed amount", () => {
 describe("Total with discount of fixed amount", () => {
   it("should return previous price - discount of fixed amount", () => {
     expect(calculateTote(50000, 1, "AL", "food", 300, "recurring")).toEqual(43108.955);
+  });
+});
+
+describe("Validate inputs", () => {
+  it("should return false if the price is minor or equal to 0", () => {
+    expect(validateInputs(0)).toEqual(false);
   });
 });

@@ -1,4 +1,4 @@
-import { calculateNetPrice, calculateTaxes, calculateTote, calculateDiscount, taxByProductCategory, calculateShippingCost, discountByProductCategory, discountByClientCategoryOnShippingCost, discountFixedAmount} from "./totalizador.js";
+import { calculateNetPrice, calculateTaxes, calculateTote, calculateDiscount, taxByProductCategory, calculateShippingCost, discountByProductCategory, discountByClientCategoryOnShippingCost, discountFixedAmount, validateInputs } from "./totalizador.js";
 
 const price_input = document.querySelector("#price");
 const quantity_input = document.querySelector("#quantity");
@@ -27,22 +27,29 @@ form.addEventListener("submit", (event) => {
   const productCategory = itemCategoryInput.value;
   const weight = volumetricWeightInput.value;
   const clientCategory = clientCategoryInput.value;
-  let netPrice = calculateNetPrice(price, quantity);
-  let shippingCost = calculateShippingCost(weight);
 
-  let discountOfNetPrice = calculateDiscount(netPrice);
-  let priceWithDiscount = netPrice - discountOfNetPrice;
+  if (!validateInputs(price)) {
+    alert("The price must be a number greater than 0");
+  }
+  else {
+    let netPrice = calculateNetPrice(price, quantity);
+    let shippingCost = calculateShippingCost(weight);
 
-  divNetPrice.innerHTML = "<p>" + netPrice + "</p>";
-  divDiscount.innerHTML = "<p>" + discountOfNetPrice + "</p>";
-  divTaxes.innerHTML = "<p>" + calculateTaxes(priceWithDiscount, state) + "</p>";
+    let discountOfNetPrice = calculateDiscount(netPrice);
+    let priceWithDiscount = netPrice - discountOfNetPrice;
 
-  
-  divTaxByProductCategory.innerHTML = "<p>" + taxByProductCategory(netPrice, productCategory) + "</p>";
-  divShippingCost.innerHTML = "<p>" + shippingCost + "</p>";
-  discountByProductCategoryDiv.innerHTML = "<p>" + discountByProductCategory(netPrice, productCategory) + "</p>";
-  discountByClientCategoryOnShippingCostDiv.innerHTML = "<p>" + discountByClientCategoryOnShippingCost(shippingCost, clientCategory) + "</p>";
-  discountFixedAmountDiv.innerHTML = "<p>" + discountFixedAmount(netPrice, productCategory, clientCategory) + "</p>";
+    divNetPrice.innerHTML = "<p>" + netPrice + "</p>";
+    divDiscount.innerHTML = "<p>" + discountOfNetPrice + "</p>";
+    divTaxes.innerHTML = "<p>" + calculateTaxes(priceWithDiscount, state) + "</p>";
 
-  divTotalPrice.innerHTML = "<p>" + calculateTote(price, quantity, state, productCategory, weight, clientCategory) + "</p>";
+
+    divTaxByProductCategory.innerHTML = "<p>" + taxByProductCategory(netPrice, productCategory) + "</p>";
+    divShippingCost.innerHTML = "<p>" + shippingCost + "</p>";
+    discountByProductCategoryDiv.innerHTML = "<p>" + discountByProductCategory(netPrice, productCategory) + "</p>";
+    discountByClientCategoryOnShippingCostDiv.innerHTML = "<p>" + discountByClientCategoryOnShippingCost(shippingCost, clientCategory) + "</p>";
+    discountFixedAmountDiv.innerHTML = "<p>" + discountFixedAmount(netPrice, productCategory, clientCategory) + "</p>";
+
+    divTotalPrice.innerHTML = "<p>" + calculateTote(price, quantity, state, productCategory, weight, clientCategory) + "</p>";
+  }
+
 });
