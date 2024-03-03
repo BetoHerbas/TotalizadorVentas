@@ -219,3 +219,9 @@ describe("Discount of fixed amount", () => {
     expect(discountFixedAmount(50000, "furniture", "recurring")).toEqual(0);
   });
 });
+
+describe("Total with discount of fixed amount", () => {
+  it("should return previous price - discount of fixed amount", () => {
+    expect(calculateTote(50000, 1, "AL", "food", 300, "recurring")).toEqual(43108.955);
+  });
+});
