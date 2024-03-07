@@ -13,8 +13,6 @@ function calculateTaxes(netPrice, state) {
       return +(netPrice * 0.0625).toFixed(3);
     case "AL":
       return +(netPrice * 0.04).toFixed(3);
-    default:
-      return 0;
   }
 }
 

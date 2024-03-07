@@ -239,4 +239,7 @@ describe("Validate inputs", () => {
   it("should return weight if the volumetric weight is minor or equal to 0", () => {
     expect(validateInputs(10, 100, -10)).toEqual("weight");
   });
+  it("should return a empty string if the price, the quantity and the volumetric weight is major to 0", () => {
+    expect(validateInputs(10, 100, 10)).toEqual("");
+  });
 });
